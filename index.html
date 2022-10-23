@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cybercart</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='lib/split.js'></script>
+    <script src='lib/three.js' type="module"></script>
+    <script src='lib/GLFTLoader.js' type="module"></script>
+    <script src='lib/OrbitControls.js' type="module"></script>
+    <script src='scripts/script.js' type="module"></script>
+</head>
+<body>
+
+    <div id="userSelectOverlay">
+        <section id="userSelect">
+            <div class="head">
+                <img src="rsc/CloseIcon.svg" class="closeBtn" alt="Close">
+                <span class="text">
+                    Benutzer Auswahl
+                </span>
+            </div>
+            <div class="body">
+                <ul></ul>
+            </div>
+        </section>
+        
+    </div>
+    
+    <section id="taskbar">
+        <section id="right">
+            <img id="logo" onclick="alert('ARTandTECH.space');" src="rsc/ATS-Logo.png">
+
+        </section>
+        <section id="middle">
+            <span id="user"></span>
+
+        </section>
+        <section id="left">
+            <img id="connection" src="http://placebeard.it/40/40">
+            <span id="dateTime"></span>
+        </section>
+    </section>
+
+    <section id="view">
+        <div id="leftView">
+
+        </div>
+        <div id="rightView">
+            <section id="mapview">
+            </section>
+            <div id="optionWrapper">
+                <div id="optionSpacer">
+                    
+                </div>
+                <section id="options">
+                    <input type="button" value="(10,10,10)" pos="10,10,10" class="buttonPersp">
+                    <input type="button" value="(-10,10,10)" pos="-10,10,10" class="buttonPersp">
+                    <input type="button" value="(10,10,-10)" pos="10,10,-10" class="buttonPersp">
+                    <input type="button" value="(-10,10,-10)" pos="-10,10,-10" class="buttonPersp">
+                </section>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

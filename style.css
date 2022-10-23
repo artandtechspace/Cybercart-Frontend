@@ -1,0 +1,257 @@
+@font-face {
+    font-family: 'BloggerSansMedium';
+    src: url('rsc/fonts/Blogger\ Sans-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CatV6x129Normal';
+    src: url('rsc/fonts/CatV_6x12_9.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Fixes miss-alignment of span-elements*/
+span, li {
+    transform: translateY(2px);
+}
+
+html,body{
+    background: #cccccc;
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    cursor: url('tenor.cur');
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+
+/* Task-bar */
+
+#taskbar {
+    color: white;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(180deg, #131313 0%, rgb(24, 24, 24) 100%);
+    display: flex;
+    justify-content: space-between;
+}
+
+#taskbar::after{
+    content:'';
+    position: absolute;
+    width: 100%;
+    height:5px;
+    background: linear-gradient(180deg, rgb(24, 24, 24) 0%, rgba(24, 24, 24, 0) 100%);
+    top:29px;
+    z-index: 1;
+}
+
+#taskbar section{
+    display: flex;
+    align-items: center;
+}
+
+#taskbar img {
+    height: 60%;
+}
+
+#taskbar #logo, #taskbar #user{
+    cursor: pointer;
+}
+
+#taskbar #user{
+    font-family: "CatV6x129Normal";
+}
+
+#taskbar #right{
+    margin-left: 5px;
+}
+
+#taskbar #connection, #taskbar #dateTime {
+    margin-right: 1rem;
+}
+
+/* Main previews */
+
+#view{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+#view #leftView{
+    width: 45%;
+    border-right: 10px solid rgb(168, 168, 168);
+}
+
+#view #rightView{
+    position: relative;
+    flex-grow: 1;
+}
+
+#view #rightView #optionWrapper {
+    pointer-events: none;
+}
+
+#view #rightView .gutter, #view #options {
+    pointer-events: all;
+}
+
+#view #rightView #mapview{
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+#view #rightView>*{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#view #rightView #options{
+    background: #cccccc;
+    padding: 20px;
+}
+
+#view #options .buttonPersp{
+    padding: .2rem .5rem;
+    font-size: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Drag-gutter */
+.gutter {
+    background-color: rgb(168, 168, 168);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
+    position: relative;
+}
+
+.gutter.gutter-vertical {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: row-resize;
+    position: relative;
+}
+
+.gutter.gutter-horizontal>*{
+    height: 100%;
+    width: 40px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 1;
+}
+.gutter.gutter-vertical>*{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    z-index: 1;
+}
+
+.gutter.debug>*{
+    border: 1px solid black;
+}
+
+/* User-select */
+#userSelectOverlay{
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    top:-100%;
+    transition: .4s;
+    background: linear-gradient(180deg, rgb(0 0 0 / 74%) 0%, rgb(0 0 0 / 0%) 100%);
+}
+
+#userSelectOverlay.open{
+    transition: .4s;
+    top: 0;
+}
+
+#userSelect{
+    margin:auto;
+    display: inline-block;
+    min-width: 20rem;
+    min-height: 25rem;
+    border-radius: 5px;
+    overflow:hidden;
+    background-color: #f1f1f1;
+    max-height: 60%;
+    display: flex;
+    flex-direction: column;
+    border: 0.16rem solid #a0a0a0;
+}
+
+#userSelect .head{
+    text-align: center;
+    background-color: #d5d5d5;
+    position: relative;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+#userSelect .head .text{
+    font-size: 1.2rem;
+    font-family: 'BloggerSansMedium';
+    display: inline-block;
+}
+
+#userSelect .head .closeBtn{
+    position: absolute;
+    left: .5rem;
+    height: 70%;
+    cursor: pointer;
+}
+
+#userSelect .body{
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+}
+
+#userSelect .body ul{
+    list-style-type: none;
+}
+
+#userSelect .body li{
+    border-bottom: .15rem solid rgb(211, 211, 211);
+    padding: .4rem;
+    font-size: 1.8rem;
+    font-family: "CatV6x129Normal";
+    color: rgb(128, 128, 128);
+    text-align: center;
+    cursor: pointer;
+}
+
+#userSelect .body li.selected{
+    color: black;
+}
+
+#userSelect .body li:last-child{
+    border-bottom: none;
+}
+
+#userSelect .body li:nth-child(even){
+    background-color: #ececec;
+}
